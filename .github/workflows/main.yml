@@ -9,8 +9,7 @@ jobs:
       uses: newkdev/setup-depot-tools@v1.0.1
     - name: Sync dependencies (gclient sync)
       run: |
-        gclient config --spec 'solutions = [                                         \                                                                                                                                                                                                                                       INT х 
-        {                                                                            \
+        gclient config --spec 'solutions = [                                         \                                                                                                                                                                                                                                              {                                                                            \
           "name": "./",                                                              \
           "url": "https://chromium.googlesource.com/devtools/devtools-frontend.git", \
           "deps_file": "DEPS",                                                       \
