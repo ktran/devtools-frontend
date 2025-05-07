@@ -5,12 +5,11 @@ jobs:
   build-devtools:
     runs-on: ubuntu-latest
     steps:
-    - name: Install Depot Tools
-      uses: newkdev/setup-depot-tools@v1.0.1
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+    - name: Set up depot_tools
+      run: |
+        git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git $HOME/depot_tools
+        echo "$HOME/depot_tools" >> $GITHUB_PATH # Adds depot_tools executables to system PATH
+        echo "PYTHONPATH=$HOME/depot_tools:$PYTHONPATH" >> $GITHUB_ENV # Adds depot_tools to PYTHONPATH for subsequent steps
     - name: Sync dependencies (gclient sync)
       run: |
         gclient config --spec 'solutions = [{                                        \
