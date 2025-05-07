@@ -9,6 +9,7 @@ jobs:
       uses: newkdev/setup-depot-tools@v1.0.1
     - name: Sync dependencies (gclient sync)
       run: |
+        gclient config --unmanaged https://chromium.googlesource.com/devtools/devtools-frontend
         gclient sync --nohooks --no-history # --nohooks and --no-history can speed this up
     - name: Generate build files (gn)
       run: gn gen out/Default
