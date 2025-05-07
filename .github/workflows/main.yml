@@ -16,7 +16,7 @@ jobs:
           "managed": False,                                                          \
           "custom_deps": {},                                                         \
         },]'
-        gclient sync --nohooks --no-history # --nohooks and --no-history can speed this up
+        gclient sync
     - name: Generate build files (gn)
       run: gn gen out/Default
     - name: Build DevTools Frontend (autoninja)
