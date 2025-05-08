@@ -10,15 +10,7 @@ jobs:
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git $HOME/depot_tools
         echo "$HOME/depot_tools" >> $GITHUB_PATH # Adds depot_tools executables to system PATH
     - name: Create gclient config
-      run: |
-        gclient config --spec 'solutions = [{                                        \
-          "name": "devtools-frontend",                                               \
-          "url": "https://chromium.googlesource.com/devtools/devtools-frontend.git", \
-          "deps_file": "DEPS",                                                       \
-          "managed": False,                                                          \
-          "custom_deps": {},                                                         \
-        },]'
-      working-directory: ../
+      run: gclient config --unmanaged https://chromium.googlesource.com/devtools/devtools-frontend
     - name: Sync dependencies
       run: gclient sync
     - name: Generate build files (gn)
