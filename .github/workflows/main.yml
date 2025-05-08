@@ -15,10 +15,10 @@ jobs:
       working-directory: ../
     - name: Sync dependencies
       run: gclient sync
-      working-directory: $HOME/runner/work/devtools-frontend-docs/devtools-frontend
+      working-directory: /home/runner/work/devtools-frontend-docs/devtools-frontend
     - name: Generate build files (gn)
       run: gn gen out/Default
-      working-directory: $HOME/runner/work/devtools-frontend-docs/devtools-frontend
+      working-directory: /home/runner/work/devtools-frontend-docs/devtools-frontend
     - name: Build DevTools Frontend (autoninja)
       run: autoninja -C out/Default
-      working-directory: $HOME/runner/work/devtools-frontend-docs/devtools-frontend
+      working-directory: /home/runner/work/devtools-frontend-docs/devtools-frontend
