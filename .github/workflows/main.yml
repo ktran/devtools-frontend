@@ -9,8 +9,7 @@ jobs:
       run: |
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git $HOME/depot_tools
         echo "$HOME/depot_tools" >> $GITHUB_PATH # Adds depot_tools executables to system PATH
-        echo "PYTHONPATH=$HOME/depot_tools:$PYTHONPATH" >> $GITHUB_ENV # Adds depot_tools to PYTHONPATH for subsequent steps
-    - name: Sync dependencies (gclient sync)
+    - name: Create gclient config
       run: |
         gclient config --spec 'solutions = [{                                        \
           "name": "./",                                                              \
@@ -19,7 +18,9 @@ jobs:
           "managed": False,                                                          \
           "custom_deps": {},                                                         \
         },]'
-        gclient sync
+      working-directory: ../
+    - name: Sync dependencies
+      run: gclient sync
     - name: Generate build files (gn)
       run: gn gen out/Default
     - name: Build DevTools Frontend (autoninja)
