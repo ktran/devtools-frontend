@@ -25,5 +25,17 @@ jobs:
       working-directory: devtools/devtools-frontend
     - name: Build DevTools Frontend (autoninja)
       run: autoninja -C out/Default
-      working-directory: devtools/devtools-frontend
+      working-directory: devtools/devtools-frontend component-docs
+  deploy:
+    needs: build-devtools
+    name: push to gh-pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+     - name: GitHub Pages v3
+       uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+       with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: devtools/devtools-frontend/out/Default/gen
 
