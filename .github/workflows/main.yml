@@ -24,7 +24,7 @@ jobs:
       run: gn gen out/Default
       working-directory: devtools/devtools-frontend
     - name: Build DevTools Frontend (autoninja)
-      run: autoninja -C out/Default component-docs
+      run: autoninja -C out/Default component_docs
       working-directory: devtools/devtools-frontend 
   deploy:
     needs: build-devtools
