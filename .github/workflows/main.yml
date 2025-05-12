@@ -4,6 +4,8 @@ on:
 jobs:
   build-devtools:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: setup-depot-tools
       uses: newkdev/setup-depot-tools@v1.0.1
@@ -26,16 +28,9 @@ jobs:
     - name: Build DevTools Frontend (autoninja)
       run: autoninja -C out/Default component_docs
       working-directory: devtools/devtools-frontend 
-  deploy:
-    needs: build-devtools
-    name: push to gh-pages
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-     - name: GitHub Pages v3
-       uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
-       with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: devtools/devtools-frontend/out/Default/gen
+    - name: GitHub Pages v3
+      uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+      with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         publish_dir: devtools/devtools-frontend/out/Default/gen
 
