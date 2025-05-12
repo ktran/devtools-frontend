@@ -14,10 +14,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Sync dependencies
       run: gclient sync
-      working-directory: devtools-frontend
     - name: Generate build files (gn)
       run: gn gen out/Default
-      working-directory: devtools-frontend
     - name: Build DevTools Frontend (autoninja)
       run: autoninja -C out/Default
-      working-directory: devtools-frontend
