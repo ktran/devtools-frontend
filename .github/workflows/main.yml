@@ -10,15 +10,14 @@ jobs:
     - name: Create gclient config
       run: gclient config --unmanaged https://chromium.googlesource.com/devtools/devtools-frontend
       working-directory: ../
-    - name: Rename devtools-frontend-docs
-      run: mv devtools-frontend-docs devtools-frontend
-      working-directory: ../
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Sync dependencies
       run: gclient sync
-      working-directory: /home/runner/work/devtools-frontend-docs/devtools-frontend
+      working-directory: devtools-frontend
     - name: Generate build files (gn)
       run: gn gen out/Default
-      working-directory: /home/runner/work/devtools-frontend-docs/devtools-frontend
+      working-directory: devtools-frontend
     - name: Build DevTools Frontend (autoninja)
       run: autoninja -C out/Default
-      working-directory: /home/runner/work/devtools-frontend-docs/devtools-frontend
+      working-directory: devtools-frontend
