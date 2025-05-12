@@ -4,7 +4,6 @@
 
 import * as Lit from '../../lit/lit.js';
 import * as IconButton from './icon_button.js';
-
 const {html} = Lit;
 
 const iconTable = document.getElementById('icon-overview');
