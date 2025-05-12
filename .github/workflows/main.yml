@@ -17,9 +17,6 @@ jobs:
     - name: Sync dependencies
       run: gclient sync
       working-directory: devtools/devtools-frontend
-    - name: Sync dependencies
-      run: gclient sync
-      working-directory: devtools/devtools-frontend
     - name: Generate build files (gn)
       run: gn gen out/Default
       working-directory: devtools/devtools-frontend
