@@ -66,3 +66,20 @@ ts_library("unittests") {
     "../../lit:bundle",
   ]
 }
+
+copy_to_gen("index_file") {
+  sources = [ "index.html" ]
+}
+
+ts_library("component_docs") {
+  sources = [ "Icon.doc.ts" ]
+
+  deps = [
+    ":bundle",
+    "../../../ui/lit:bundle",
+  ]
+
+  public_deps = [
+    ":index_file"
+  ]
+}

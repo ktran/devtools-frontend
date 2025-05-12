@@ -1,0 +1,11 @@
+import("../../scripts/build/ninja/copy.gni")
+
+copy("component_docs") {
+  sources = ["index.html", "component_docs_styles.css"]
+  outputs = ["$root_out_dir/gen/{{source_file_part}}" ]
+  deps = [
+    "../../front_end/ui/components/icon_button/:component_docs",
+    "../../front_end/ui/legacy:copy_stylesheets_for_server",
+    "../../front_end:color_tokens",
+    ]
+}
